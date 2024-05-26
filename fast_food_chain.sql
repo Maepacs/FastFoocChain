@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2024 at 05:37 AM
+-- Generation Time: May 26, 2024 at 04:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `fast_food_chains` (
-  `id` int(50) NOT NULL,
-  `loc_id` int(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `type` varchar(50) NOT NULL
+  `id` int(6) NOT NULL,
+  `loc_id` int(6) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -41,12 +41,12 @@ CREATE TABLE `fast_food_chains` (
 --
 
 CREATE TABLE `locations` (
-  `id` int(50) NOT NULL,
-  `ffc_id` int(50) NOT NULL,
-  `city` varchar(50) NOT NULL,
-  `province` varchar(50) NOT NULL,
-  `region` varchar(50) NOT NULL,
-  `country` varchar(50) NOT NULL
+  `id` int(6) NOT NULL,
+  `ffc_id` int(6) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `province` varchar(100) NOT NULL,
+  `region` varchar(100) NOT NULL,
+  `country` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -56,11 +56,11 @@ CREATE TABLE `locations` (
 --
 
 CREATE TABLE `products` (
-  `id` int(50) NOT NULL,
-  `ffc_id` int(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `category` varchar(50) NOT NULL,
-  `price` int(50) NOT NULL
+  `id` int(6) NOT NULL,
+  `ffc_id` int(6) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `price` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -70,9 +70,9 @@ CREATE TABLE `products` (
 --
 
 CREATE TABLE `sales` (
-  `id` int(50) NOT NULL,
-  `ffc_id` int(50) NOT NULL,
-  `amount` int(50) NOT NULL,
+  `id` int(6) NOT NULL,
+  `ffc_id` int(6) NOT NULL,
+  `amount` decimal(10,0) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -83,11 +83,11 @@ CREATE TABLE `sales` (
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `id` int(6) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `role` varchar(50) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -95,11 +95,39 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
-(1, 'admin', 'admin@admin.com', '$2y$10$mKKJABDyjPvlt9uS8SpNTetOzLYzoDPhBGvzkLByOKHvU.1SxYgq.', 'admin');
+(1, 'Admin', 'Admin@gmail.com', '$2y$10$wS1qh0EsapNgKDUHMq77mest6IB1I4NMznZeGyedYDliLlVSBJMBG', 'admin');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `fast_food_chains`
+--
+ALTER TABLE `fast_food_chains`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `loc_id` (`loc_id`);
+
+--
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `ffc_id` (`ffc_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `ffc_id` (`ffc_id`);
+
+--
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `ffc_id` (`ffc_id`);
 
 --
 -- Indexes for table `users`
@@ -112,10 +140,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `fast_food_chains`
+--
+ALTER TABLE `fast_food_chains`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
