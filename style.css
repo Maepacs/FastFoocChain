@@ -144,48 +144,59 @@
     display: block;
 }
 
-.container {
-    width: 50%;
-    margin: 50px auto;
-    background-color: #fff;
+.chain_form {
+    align-items: center;
+    width: 500px;
+    /* Adjust width as needed */
+    margin: 0 auto;
+    /* Center the form horizontally */
     padding: 20px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
 }
 
-h2 {
-    text-align: center;
-}
-
-.form-group {
+.chain_form h2 {
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
-label {
-    display: block;
+.chain_form label {
     font-weight: bold;
 }
 
-input[type="text"],
-select {
+.chain_form input[type="text"],
+.chain_form select {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-button[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
+.chain_form input[type="submit"] {
+    background-color: #007bff;
     color: white;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-button[type="submit"]:hover {
-    background-color: #45a049;
+.chain_form input[type="submit"]:hover {
+    background-color: #139d68;
+}
+
+.chain_form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.chain_form select option {
+    padding: 8px;
 }
